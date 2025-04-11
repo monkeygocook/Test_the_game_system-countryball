@@ -1,4 +1,9 @@
 ﻿# The script of the game goes in this file.
+init python:
+    day = 1
+    time_of_day = "เช้า"  # หรือ "บ่าย", "เย็น", "กลางคืน"
+
+
 
 image Au_left = "Au_left.png"
 image Au_right = "Au_right.png"
@@ -25,7 +30,25 @@ transform small_center:
     xalign 0.5
     yalign 1.0
 
+transform big_center:
+    zoom 1.0
+    xalign 0.5
+    yalign 1.0
+
 # The game starts here.
+
+label update_time:
+    if time_of_day == "เช้า":
+        $ time_of_day = "บ่าย"
+    elif time_of_day == "บ่าย":
+        $ time_of_day = "เย็น"
+    elif time_of_day == "เย็น":
+        $ time_of_day = "กลางคืน"
+    else:
+        $ time_of_day = "เช้า"
+        $ day += 1
+    return
+
 
 label start:
 
@@ -42,8 +65,11 @@ label start:
     show Au_right at small_left
     show Au_left at small_right
     
+    $ day = 1
+    $ time_of_day = "เช้า"
 
-    
+    show screen day_time_overlay(day, time_of_day)
+
     # These display lines of dialogue.
 
     e "ไอ้ด้วง เอ็งก็อายุอาณาขนาดนี้แล้ว หาคู่หาเมียได้แล้ว เอ็งจะครองโสดอยู่ผู้เดียวมิได้"
@@ -54,6 +80,22 @@ label start:
 
     a "ไม่ล่ะ ฉันอยากไปฟังเทศน์ที่วัดศรีชุม"
 
+    jump temple
+
     # This ends the game.
+label temple:
+    $ day = วันอาทิตย์
+    $ time_of_day = "เช้า"
+
+    show screen day_time_overlay(day, time_of_day)
+
+    scene 134 at big_center
+
+    a "ถึงวัดศรีชุมสักที"
+
+
+
+
+
 
     return

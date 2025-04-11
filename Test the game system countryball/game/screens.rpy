@@ -1609,3 +1609,16 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
+
+#############
+##time
+#############
+screen day_time_overlay(day, time_of_day):
+    frame:
+        background None
+        xalign 1.0
+        yalign 0.0
+        padding (10, 10)
+
+        text "วันที่ [day] | [time_of_day]" size 24 color "#ffffff" outlines [(2, "#000", 0, 0)]

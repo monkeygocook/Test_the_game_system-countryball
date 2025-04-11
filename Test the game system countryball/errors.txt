@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 36: expected 'simple_expression' not found.
-    scene bg_home at 
-                     ^
+File "game/script.rpy", line 69: expected statement.
+    f"วันนี้เป็นวันที่ {day} ตอนนี้เป็นเวลา {time_of_day} "
+                                                           ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Thu Apr 10 23:46:38 2025
+Fri Apr 11 12:00:26 2025
