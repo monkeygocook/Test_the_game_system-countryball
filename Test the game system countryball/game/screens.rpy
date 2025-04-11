@@ -1614,11 +1614,10 @@ style slider_slider:
 #############
 ##time
 #############
-screen day_time_overlay(day, time_of_day):
+screen date_time_overlay():
     frame:
-        background None
         xalign 1.0
         yalign 0.0
         padding (10, 10)
-
-        text "วันที่ [day] | [time_of_day]" size 24 color "#ffffff" outlines [(2, "#000", 0, 0)]
+        background "#00000080"  # สีพื้นหลังใส
+        text "[dayname]ที่ [day] [monthname] [year] - [time_of_day]" size 22 color "#FFFFFF"

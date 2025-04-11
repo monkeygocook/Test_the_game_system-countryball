@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 69: expected statement.
-    f"วันนี้เป็นวันที่ {day} ตอนนี้เป็นเวลา {time_of_day} "
-                                                           ^
+File "game/script.rpy", line 98: expected statement.
+    a += 1
+      ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Fri Apr 11 12:00:26 2025
+Fri Apr 11 22:11:21 2025

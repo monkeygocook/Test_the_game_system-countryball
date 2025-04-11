@@ -1,7 +1,10 @@
 ﻿# The script of the game goes in this file.
 init python:
     day = 1
+    dayname = "วันจันทร์"
+    monthname = "มกราคม"
     time_of_day = "เช้า"  # หรือ "บ่าย", "เย็น", "กลางคืน"
+    year = 0000
 
 
 
@@ -65,10 +68,13 @@ label start:
     show Au_right at small_left
     show Au_left at small_right
     
-    $ day = 1
-    $ time_of_day = "เช้า"
+    $ day = 8
+    $ dayname = "วันศุกร์"
+    $ monthname = "พฤษภาคม"
+    $ time_of_day = "ค่ำ"
+    $ year = 2310
 
-    show screen day_time_overlay(day, time_of_day)
+    show screen date_time_overlay
 
     # These display lines of dialogue.
 
@@ -80,22 +86,36 @@ label start:
 
     a "ไม่ล่ะ ฉันอยากไปฟังเทศน์ที่วัดศรีชุม"
 
-    jump temple
+    jump home_day
+
+
+label home_day:
+
+    scene bg_home_day at small_center
+
+    menu:
+        "สวัสดีตอนเช้า":
+            $ b = 1
+            return
+
+
+    
+#label temple:
+#    $ day = 12
+#    $ dayname = "วันอังคาร"
+#    $ monthname = "พฤษภาคม"
+#    $ time_of_day = "เช้า"
+#    $ year = 2310
+#
+#    show screen date_time_overlay
+#
+#    scene 134 at big_center
+#
+#    a "ถึงวัดศรีชุมสักที"
+
+
+
+
 
     # This ends the game.
-label temple:
-    $ day = วันอาทิตย์
-    $ time_of_day = "เช้า"
-
-    show screen day_time_overlay(day, time_of_day)
-
-    scene 134 at big_center
-
-    a "ถึงวัดศรีชุมสักที"
-
-
-
-
-
-
     return

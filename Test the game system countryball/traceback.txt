@@ -1,26 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 87, in script
-    $ day = วันอาทิตย์
-  File "game/script.rpy", line 87, in <module>
-    $ day = วันอาทิตย์
-NameError: name 'วันอาทิตย์' is not defined
+  File "game/script.rpy", line 113, in script
+    a "ถึงวัดศรีชุมสักที"
+Exception: Sayer b'a' is not a function or string.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 87, in script
-    $ day = วันอาทิตย์
-  File "D:\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 87, in <module>
-    $ day = วันอาทิตย์
-NameError: name 'วันอาทิตย์' is not defined
+  File "game/script.rpy", line 113, in script
+    a "ถึงวัดศรีชุมสักที"
+  File "D:\renpy-8.3.7-sdk\renpy\ast.py", line 2586, in execute
+    Say.execute(self)
+  File "D:\renpy-8.3.7-sdk\renpy\ast.py", line 600, in execute
+    raise Exception("Sayer %s is not a function or string." % self.who.encode("utf-8"))
+Exception: Sayer b'a' is not a function or string.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.3.7.25031702
 Test the game system countryball 1.0
-Fri Apr 11 14:37:02 2025
+Fri Apr 11 22:13:22 2025
