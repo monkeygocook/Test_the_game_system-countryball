@@ -2,21 +2,67 @@
 
 While running game code:
   File "game/script.rpy", line 113, in script
-    a "ถึงวัดศรีชุมสักที"
-Exception: Sayer b'a' is not a function or string.
+    menu:
+  File "game/script.rpy", line 43, in execute
+    screen bag_icon_button:
+  File "game/script.rpy", line 43, in execute
+    screen bag_icon_button:
+  File "game/script.rpy", line 45, in execute
+    frame:
+  File "game/script.rpy", line 49, in execute
+    textbutton "":
+  File "game/script.rpy", line 49, in keywords
+    textbutton "":
+  File "game/script.rpy", line 50, in <module>
+    action ShowScreen("inventory_screen")  # เปิดหน้าจอคลังไอเท็ม
+NameError: name 'ShowScreen' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "game/script.rpy", line 113, in script
-    a "ถึงวัดศรีชุมสักที"
-  File "D:\renpy-8.3.7-sdk\renpy\ast.py", line 2586, in execute
-    Say.execute(self)
-  File "D:\renpy-8.3.7-sdk\renpy\ast.py", line 600, in execute
-    raise Exception("Sayer %s is not a function or string." % self.who.encode("utf-8"))
-Exception: Sayer b'a' is not a function or string.
+    menu:
+  File "D:\renpy-8.3.7-sdk\renpy\ast.py", line 1632, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "D:\renpy-8.3.7-sdk\renpy\exports\menuexports.py", line 134, in menu
+    rv = renpy.store.menu(new_items)
+  File "D:\renpy-8.3.7-sdk\renpy\exports\menuexports.py", line 424, in display_menu
+    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
+  File "D:\renpy-8.3.7-sdk\renpy\ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "D:\renpy-8.3.7-sdk\renpy\display\core.py", line 2218, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "D:\renpy-8.3.7-sdk\renpy\display\core.py", line 2748, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "D:\renpy-8.3.7-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\renpy-8.3.7-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\renpy-8.3.7-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\renpy-8.3.7-sdk\renpy\display\screen.py", line 480, in visit_all
+    callback(self)
+  File "D:\renpy-8.3.7-sdk\renpy\display\core.py", line 2748, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "D:\renpy-8.3.7-sdk\renpy\display\screen.py", line 491, in per_interact
+    self.update()
+  File "D:\renpy-8.3.7-sdk\renpy\display\screen.py", line 700, in update
+    self.screen.function(**self.scope)
+  File "game/script.rpy", line 43, in execute
+    screen bag_icon_button:
+  File "game/script.rpy", line 43, in execute
+    screen bag_icon_button:
+  File "game/script.rpy", line 45, in execute
+    frame:
+  File "game/script.rpy", line 49, in execute
+    textbutton "":
+  File "game/script.rpy", line 49, in keywords
+    textbutton "":
+  File "game/script.rpy", line 50, in <module>
+    action ShowScreen("inventory_screen")  # เปิดหน้าจอคลังไอเท็ม
+NameError: name 'ShowScreen' is not defined
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.3.7.25031702
 Test the game system countryball 1.0
-Fri Apr 11 22:13:22 2025
+Sat Apr 12 20:45:03 2025

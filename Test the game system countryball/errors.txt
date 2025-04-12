@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 98: expected statement.
-    a += 1
-      ^
+File "game/script.rpy", line 109: expected statement.
+    "งานเสร็จแล้ว!":
+                   ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Fri Apr 11 22:11:21 2025
+Sat Apr 12 01:35:38 2025

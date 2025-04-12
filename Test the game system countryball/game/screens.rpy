@@ -1621,3 +1621,27 @@ screen date_time_overlay():
         padding (10, 10)
         background "#00000080"  # สีพื้นหลังใส
         text "[dayname]ที่ [day] [monthname] [year] - [time_of_day]" size 22 color "#FFFFFF"
+
+#############
+##work
+#############
+screen work_progress_overlay():
+    frame:
+        xalign 0.0
+        yalign 0.0
+        has vbox
+        text "ความคืบหน้าของการทำงาน" size 40
+        bar value work_progress range 100 xmaximum 300
+
+##############
+## item
+#############
+screen inventory_screen():
+    frame:
+        xalign 0.5
+        yalign 0.5
+        has vbox
+        text "คลังไอเท็ม" size 40
+        for item in inventory:
+            text "[item]" size 30
+        textbutton "ปิด" action Return()

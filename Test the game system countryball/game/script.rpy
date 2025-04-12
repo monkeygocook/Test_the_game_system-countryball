@@ -5,6 +5,8 @@ init python:
     monthname = "มกราคม"
     time_of_day = "เช้า"  # หรือ "บ่าย", "เย็น", "กลางคืน"
     year = 0000
+    work_progress = 0  # กำหนดตัวแปรความคืบหน้า
+    inventory = []  # กำหนดตัวแปรคลังไอเท็ม
 
 
 
@@ -90,28 +92,42 @@ label start:
 
 
 label home_day:
-
     scene bg_home_day at small_center
 
-    menu:
-        "สวัสดีตอนเช้า":
-            $ b = 1
-            return
+    show screen date_time_overlay
+    show screen work_progress_overlay
 
+    menu:
+        "ทำงาน":
+            $ work_progress += 25  # เพิ่มความคืบหน้า
+            if work_progress >= 100:
+                $ work_progress = 0  # รีเซ็ตความคืบหน้า
+                $ new_item = "เหรียญทอง"  # ไอเท็มที่ได้รับ
+                $ inventory.append(new_item)  # เพิ่มไอเท็มในคลัง
+                a "งานเสร็จแล้ว! ฉันได้รับ [new_item]!"
+            jump home_day
+
+        "ไปตลาด":
+            a "ไปตลาดกันเถอะ!"
+            jump home_day
+
+        "ดูคลังไอเท็ม":
+            call screen inventory_screen
+            jump home_day
 
     
-#label temple:
-#    $ day = 12
-#    $ dayname = "วันอังคาร"
-#    $ monthname = "พฤษภาคม"
-#    $ time_of_day = "เช้า"
-#    $ year = 2310
-#
-#    show screen date_time_overlay
-#
-#    scene 134 at big_center
-#
-#    a "ถึงวัดศรีชุมสักที"
+label temple:
+    $ day = 12
+    $ dayname = "วันอังคาร"
+    $ monthname = "พฤษภาคม"
+    $ time_of_day = "เช้า"
+    $ year = 2310
+
+    show screen date_time_overlay
+
+    scene 134 at big_center
+
+    a "ถึงวัดศรีชุมสักที"
 
 
 
