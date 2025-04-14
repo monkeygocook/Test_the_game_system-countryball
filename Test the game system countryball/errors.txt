@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 109: expected statement.
-    "งานเสร็จแล้ว!":
-                   ^
+File "game/script.rpy", line 149: Line is indented, but the preceding show statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    du "ถึงวัดศรีชุมสักที"
+    ^
+
+File "game/script.rpy", line 152: Line is indented, but the preceding show statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    z "ข้าชื่อ ลิลลี่ ข้าจากเมืองหลวง"
+    ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Sat Apr 12 01:35:38 2025
+Mon Apr 14 23:30:27 2025

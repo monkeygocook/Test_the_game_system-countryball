@@ -1,24 +1,27 @@
-﻿# The script of the game goes in this file.
-init python:
-    day = 1
-    dayname = "วันจันทร์"
-    monthname = "มกราคม"
-    time_of_day = "เช้า"  # หรือ "บ่าย", "เย็น", "กลางคืน"
-    year = 0000
-    work_progress = 0  # กำหนดตัวแปรความคืบหน้า
-    inventory = []  # กำหนดตัวแปรคลังไอเท็ม
+# The script of the game goes in this file.
+
+default day = 1
+default dayname = "วันจันทร์"
+default monthname = "มกราคม"
+default time_of_day = "เช้า"  # หรือ "บ่าย", "เย็น", "กลางคืน"
+default year = 0000
+default work_progress = 0  # กำหนดตัวแปรความคืบหน้า
+default inventory = []  # กำหนดตัวแปรคลังไอเท็ม
 
 
 
 image Au_left = "Au_left.png"
 image Au_right = "Au_right.png"
-
+image Ch_girl_3 = "Ch_girl_3.png"
+image Ch_man_1 = "Ch_man_1.png"
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
 define e = Character("บิดา")
 define a = Character("ด้วง")
+define du = Character("ดวง")
+define z = Character("ลิลลี่")
 
 transform small_left:
     zoom 0.25
@@ -94,6 +97,12 @@ label start:
 label home_day:
     scene bg_home_day at small_center
 
+    $ day = 9
+    $ dayname = "วันเสาร์"
+    $ monthname = "พฤษภาคม"
+    $ time_of_day = "เช้า"
+    $ year = 2310
+
     show screen date_time_overlay
     show screen work_progress_overlay
 
@@ -103,13 +112,23 @@ label home_day:
             if work_progress >= 100:
                 $ work_progress = 0  # รีเซ็ตความคืบหน้า
                 $ new_item = "เหรียญทอง"  # ไอเท็มที่ได้รับ
-                $ inventory.append(new_item)  # เพิ่มไอเท็มในคลัง
+                python:
+                    # ตรวจสอบว่ามีไอเท็มอยู่ในคลังหรือไม่
+                    if any(item.startswith(new_item) for item in inventory):
+                        for i, item in enumerate(inventory):
+                            if item.startswith(new_item):
+                                # เพิ่มจำนวนในรูปแบบ x2, x3, ...
+                                count = int(item.split(" x")[-1]) if " x" in item else 1
+                                inventory[i] = f"{new_item} x{count + 1}"
+                                break
+                    else:
+                        inventory.append(new_item)  # เพิ่มไอเท็มใหม่ในคลัง
                 a "งานเสร็จแล้ว! ฉันได้รับ [new_item]!"
             jump home_day
 
-        "ไปตลาด":
-            a "ไปตลาดกันเถอะ!"
-            jump home_day
+        "ไปวัดศรีชุม":
+            a "ไปวัดศรีชุมกันเถอะ!"
+            jump temple
 
         "ดูคลังไอเท็ม":
             call screen inventory_screen
@@ -123,12 +142,19 @@ label temple:
     $ time_of_day = "เช้า"
     $ year = 2310
 
+    hide screen work_progress_overlay
     show screen date_time_overlay
 
     scene 134 at big_center
+    show Ch_man_1 at small_left
+    du "ถึงวัดศรีชุมสักที"
+    du "โอ้อรเจ้า เจ้ามาจากไหนรึ ชุดของเจ้าช่างประหลาดเยี่ยงนี้"
 
-    a "ถึงวัดศรีชุมสักที"
 
+    show Ch_girl_3 at small_right
+    z "ข้าชื่อ ลิลลี่ ข้าจากเมืองหลวง"
+    z "ข้าต้องการมาที่นี่เพื่อฟังเทศน์ของพระอาจารย์"
+    z "ข้าชอบฟังเทศน์ของพระอาจารย์มาก"
 
 
 
